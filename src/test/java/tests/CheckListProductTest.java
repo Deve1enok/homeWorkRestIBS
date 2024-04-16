@@ -6,7 +6,6 @@ import io.qameta.allure.Feature;
 import io.qameta.allure.Owner;
 import io.restassured.response.Response;
 import models.ProductListModel;
-import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
@@ -15,6 +14,7 @@ import java.util.List;
 
 import static io.qameta.allure.Allure.step;
 import static io.restassured.RestAssured.given;
+import static org.assertj.core.api.Assertions.assertThat;
 import static specs.ProductSpecification.requestSpecification;
 import static specs.ProductSpecification.responseSpecification200;
 
@@ -41,21 +41,26 @@ public class CheckListProductTest {
                         .spec(responseSpecification200)
                         .extract().body().jsonPath().getList("", ProductListModel.class));
 
-        step("Проверяем тело-ответа", () ->
-                Assertions.assertAll(
-                        () -> Assertions.assertEquals(dataProduct.getProductName(), products.get(0).getName()),
-                        () -> Assertions.assertEquals(dataProduct.getProductTypeFruit(), products.get(0).getType()),
-                        () -> Assertions.assertTrue(products.get(0).isExotic()),
-                        () -> Assertions.assertEquals(dataProduct.getProductName1(), products.get(1).getName()),
-                        () -> Assertions.assertEquals(dataProduct.getProductTypeVeg(), products.get(1).getType()),
-                        () -> Assertions.assertFalse(products.get(1).isExotic()),
-                        () -> Assertions.assertEquals(dataProduct.getProductName2(), products.get(2).getName()),
-                        () -> Assertions.assertEquals(dataProduct.getProductTypeVeg(), products.get(2).getType()),
-                        () -> Assertions.assertFalse(products.get(2).isExotic()),
-                        () -> Assertions.assertEquals(dataProduct.getProductName3(), products.get(3).getName()),
-                        () -> Assertions.assertEquals(dataProduct.getProductTypeFruit(), products.get(3).getType()),
-                        () -> Assertions.assertFalse(products.get(3).isExotic()))
-        );
+        step("Проверяем тело-ответа", () -> {
+            assertThat(dataProduct.getProductName()).as("Не совпадает имя первого товара")
+                    .isEqualTo(products.get(0).getName());
+            assertThat(dataProduct.getProductName1()).as("Не совпадает имя второго товара")
+                    .isEqualTo(products.get(1).getName());
+            assertThat(dataProduct.getProductName2()).as("Не совпадает имя третьего товара")
+                    .isEqualTo(products.get(2).getName());
+            assertThat(dataProduct.getProductName3()).as("Не совпадает имя четвертого товара")
+                    .isEqualTo(products.get(3).getName());
+            assertThat(dataProduct.getProductTypeFruit()).as("Не совпадает тип товара")
+                    .isEqualTo(products.get(0).getType())
+                    .isEqualTo(products.get(3).getType());
+            assertThat(dataProduct.getProductTypeVeg()).as("Не совпадает тип товара")
+                    .isEqualTo(products.get(1).getType())
+                    .isEqualTo(products.get(2).getType());
+            assertThat(products.get(0).isExotic()).as("Не совпадает чек-бокс экзотический").isTrue();
+            assertThat(products.get(1).isExotic()).as("Не совпадает чек-бокс экзотический").isFalse();
+            assertThat(products.get(2).isExotic()).as("Не совпадает чек-бокс экзотический").isFalse();
+            assertThat(products.get(2).isExotic()).as("Не совпадает чек-бокс экзотический").isFalse();
+        });
     }
 
     @Test
@@ -89,20 +94,25 @@ public class CheckListProductTest {
                         .spec(responseSpecification200)
                         .extract().body().jsonPath().getList("", ProductListModel.class));
 
-        step("Проверяем тело-ответа", () ->
-                Assertions.assertAll(
-                        () -> Assertions.assertEquals(dataProduct.getProductName(), products.get(0).getName()),
-                        () -> Assertions.assertEquals(dataProduct.getProductTypeFruit(), products.get(0).getType()),
-                        () -> Assertions.assertTrue(products.get(0).isExotic()),
-                        () -> Assertions.assertEquals(dataProduct.getProductName1(), products.get(1).getName()),
-                        () -> Assertions.assertEquals(dataProduct.getProductTypeVeg(), products.get(1).getType()),
-                        () -> Assertions.assertFalse(products.get(1).isExotic()),
-                        () -> Assertions.assertEquals(dataProduct.getProductName2(), products.get(2).getName()),
-                        () -> Assertions.assertEquals(dataProduct.getProductTypeVeg(), products.get(2).getType()),
-                        () -> Assertions.assertFalse(products.get(2).isExotic()),
-                        () -> Assertions.assertEquals(dataProduct.getProductName3(), products.get(3).getName()),
-                        () -> Assertions.assertEquals(dataProduct.getProductTypeFruit(), products.get(3).getType()),
-                        () -> Assertions.assertFalse(products.get(3).isExotic()))
-        );
+        step("Проверяем тело-ответа", () -> {
+            assertThat(dataProduct.getProductName()).as("Не совпадает имя первого товара")
+                    .isEqualTo(products.get(0).getName());
+            assertThat(dataProduct.getProductName1()).as("Не совпадает имя второго товара")
+                    .isEqualTo(products.get(1).getName());
+            assertThat(dataProduct.getProductName2()).as("Не совпадает имя третьего товара")
+                    .isEqualTo(products.get(2).getName());
+            assertThat(dataProduct.getProductName3()).as("Не совпадает имя четвертого товара")
+                    .isEqualTo(products.get(3).getName());
+            assertThat(dataProduct.getProductTypeFruit()).as("Не совпадает тип товара")
+                    .isEqualTo(products.get(0).getType())
+                    .isEqualTo(products.get(3).getType());
+            assertThat(dataProduct.getProductTypeVeg()).as("Не совпадает тип товара")
+                    .isEqualTo(products.get(1).getType())
+                    .isEqualTo(products.get(2).getType());
+            assertThat(products.get(0).isExotic()).as("Не совпадает чек-бокс экзотический").isTrue();
+            assertThat(products.get(1).isExotic()).as("Не совпадает чек-бокс экзотический").isFalse();
+            assertThat(products.get(2).isExotic()).as("Не совпадает чек-бокс экзотический").isFalse();
+            assertThat(products.get(2).isExotic()).as("Не совпадает чек-бокс экзотический").isFalse();
+        });
     }
 }
