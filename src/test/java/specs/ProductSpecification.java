@@ -7,6 +7,7 @@ import io.restassured.specification.RequestSpecification;
 import io.restassured.specification.ResponseSpecification;
 import org.aeonbits.owner.ConfigFactory;
 
+import static helpers.CustomAllureListener.withCustomTemplates;
 import static io.restassured.RestAssured.with;
 import static io.restassured.filter.log.LogDetail.BODY;
 import static io.restassured.filter.log.LogDetail.STATUS;
@@ -16,6 +17,7 @@ public class ProductSpecification {
     public static QualitConfig configOwner = ConfigFactory.create(QualitConfig.class);
 
     public static RequestSpecification requestSpecification = with()
+            .filter(withCustomTemplates())
             .baseUri(configOwner.baseUri())
             .contentType(ContentType.JSON)
             .log().method()
