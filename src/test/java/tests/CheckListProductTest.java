@@ -59,7 +59,7 @@ public class CheckListProductTest {
             assertThat(products.get(0).isExotic()).as("Не совпадает чек-бокс экзотический").isTrue();
             assertThat(products.get(1).isExotic()).as("Не совпадает чек-бокс экзотический").isFalse();
             assertThat(products.get(2).isExotic()).as("Не совпадает чек-бокс экзотический").isFalse();
-            assertThat(products.get(2).isExotic()).as("Не совпадает чек-бокс экзотический").isFalse();
+            assertThat(products.get(3).isExotic()).as("Не совпадает чек-бокс экзотический").isFalse();
         });
     }
 
