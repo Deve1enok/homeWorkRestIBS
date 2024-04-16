@@ -30,6 +30,7 @@
         <allureRestAssured.version>2.24.0</allureRestAssured.version>
         <aspectj.version>1.9.21.1</aspectj.version>
         <slf4jreload.version>2.0.12</slf4jreload.version>
+        <assertJ.version>3.24.2</assertJ.version>
     </properties>
 
     <dependencies>
@@ -89,6 +90,13 @@
             <groupId>org.slf4j</groupId>
             <artifactId>slf4j-reload4j</artifactId>
             <version>${slf4jreload.version}</version>
+            <scope>test</scope>
+        </dependency>
+        <!-- https://mvnrepository.com/artifact/org.assertj/assertj-core -->
+        <dependency>
+            <groupId>org.assertj</groupId>
+            <artifactId>assertj-core</artifactId>
+            <version>${assertJ.version}</version>
             <scope>test</scope>
         </dependency>
 
