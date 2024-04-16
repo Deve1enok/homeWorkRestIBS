@@ -1,6 +1,7 @@
 package tests;
 
 import data.DataProduct;
+import io.qameta.allure.Epic;
 import io.qameta.allure.Feature;
 import io.qameta.allure.Owner;
 import io.restassured.RestAssured;
@@ -16,6 +17,7 @@ import static io.restassured.RestAssured.given;
 import static specs.ProductSpecification.*;
 
 @DisplayName("QualitApi")
+@Epic("Список товаров")
 public class AddingProductTest {
 
     DataProduct dataProduct = new DataProduct();

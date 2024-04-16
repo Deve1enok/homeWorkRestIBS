@@ -1,6 +1,7 @@
 package tests;
 
 import data.DataProduct;
+import io.qameta.allure.Epic;
 import io.qameta.allure.Feature;
 import io.qameta.allure.Owner;
 import io.restassured.response.Response;
@@ -18,6 +19,7 @@ import static specs.ProductSpecification.requestSpecification;
 import static specs.ProductSpecification.responseSpecification200;
 
 @DisplayName("QualitApi")
+@Epic("Список товаров")
 public class CheckListProductTest {
     DataProduct dataProduct = new DataProduct();
     private String cookies;
