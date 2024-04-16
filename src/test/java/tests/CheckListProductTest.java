@@ -7,6 +7,7 @@ import io.restassured.response.Response;
 import models.ProductListModel;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
 
 import java.util.List;
@@ -22,6 +23,7 @@ public class CheckListProductTest {
     private String cookies;
 
     @Test
+    @Tag("positive_test")
     @Owner("Fazlyakhemtov D.A.")
     @Feature("Получение списка товара")
     @DisplayName("Проверка дефолтного списка продуктов")
@@ -55,6 +57,7 @@ public class CheckListProductTest {
     }
 
     @Test
+    @Tag("positive_test")
     @Owner("Fazlyakhemtov D.A.")
     @Feature("Получение списка товара")
     @DisplayName("Проверка дефолтного списка продуктов после сброса данных")
