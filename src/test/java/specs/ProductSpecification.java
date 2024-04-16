@@ -30,4 +30,9 @@ public class ProductSpecification {
             .log(STATUS)
             .log(BODY)
             .build();
+    public static ResponseSpecification responseSpecification400 = new ResponseSpecBuilder()
+            .expectStatusCode(400)
+            .log(STATUS)
+            .log(BODY)
+            .build();
 }
