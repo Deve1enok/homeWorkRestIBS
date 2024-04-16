@@ -9,6 +9,5 @@ public class ProductListModel {
 
     public String name;
     public String type;
-    public String Token;
     public boolean exotic;
 }
